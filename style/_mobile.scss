@@ -39,7 +39,8 @@
 
     opacity: 0;
     visibility: visible;
-    transition: 1s all ease;
+    transition: 0.5s all ease;
+    pointer-events: none;
 
     // 1
     .menu {
@@ -97,19 +98,19 @@
   /* --------------- ACTIVE-TOGGLE -------------- */
   .head.active > .head-toggle {
     img {
-      filter: invert(1) brightness(0);
+      filter: brightness(0) invert(1);
     }
+  }
+  .head.active > .head-logo {
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
 
-    .head.active > .head-logo {
-      img {
-        filter: invert(1) brightness(0);
-      }
-    }
-
-    .head.active > .head-menu {
-      opacity: 1;
-      visibility: visible;
-    }
+  .head.active > .head-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
   }
 
   /* ============================================ */
@@ -138,6 +139,10 @@
 
       p {
         max-width: 50ch;
+      }
+
+      .button {
+        padding: 0 0.5rem;
       }
     }
   }
@@ -283,6 +288,28 @@
     // .media
     .media {
       margin: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 424.98px) {
+  .foot-wrapper-top {
+    .foot-email {
+      min-width: unset;
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 374.98px) {
+  .foot-wrapper-top {
+    .foot-email {
+      .email {
+        span {
+          font-size: 0.75rem;
+          top: 70%;
+        }
+      }
     }
   }
 }

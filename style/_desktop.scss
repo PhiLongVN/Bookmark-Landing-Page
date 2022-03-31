@@ -239,6 +239,7 @@ main {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        user-select: none;
 
         &::before {
           content: '';
@@ -450,7 +451,7 @@ main {
 
       .block-title {
         cursor: pointer;
-        // padding: 1rem 0;
+        user-select: none;
         width: 100%;
 
         display: flex;
@@ -460,24 +461,30 @@ main {
         &:hover > h4 {
           color: #e56162;
         }
+
+        img {
+          transition: 0.5s all ease;
+        }
       }
 
       p {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
         max-height: 0;
-        overflow-y: auto;
-        transition: 1s all ease;
+        overflow-y: hidden;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.8s ease;
       }
 
       /* ------------------ ACTIVE ------------------ */
-      .accor-block.active img {
+      &.active > .block-title > img {
         transform: rotate(180deg);
       }
 
-      .accor-block.active p {
+      &.active p {
+        transform: translateY(0px);
         padding-top: 1rem;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         max-height: 400px;
+        opacity: 1;
       }
     }
   }
@@ -545,7 +552,8 @@ main {
 
   // 3
   .foot-email {
-    width: 50%;
+    width: 70%;
+    max-width: 450px;
     display: flex;
     justify-content: space-between;
     align-items: center;
